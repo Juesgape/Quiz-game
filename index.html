@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <div class="initial-screen-container">
+
+        <div class="initial-title">
+            <h1>INFORMATIC QUIZ</h1>
+        </div>
+        
+        <div class="main-initial-screen">
+            <div class="input-container">
+                <label><h3>What's your name?</h3></label>
+                <input id="input-name" type="text">
+
+                <div class="initial-screen-btn">
+                    <button id="initial-continue">Continue</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="hidden" class="main-container">
+        <div class="table-container">
+            <div class="questions-container">
+
+                <div class="main-score">
+
+                        <p>Score: <span id="score">0</span>/10 </p>
+                        <img src="./images/icons8-dart-64.png" alt="dart-image" width="30px">
+
+                    <div class="timer">
+                        <p>Timer: <span id="timeLeft">0</span></p>
+                    </div>
+                </div>
+
+                <div class="title">
+                    <h3 id="question">Question</h3>
+                </div>
+                <div class="btn-container">
+                    <button class="btn">Answer 1</button>
+                    <button  class="btn">Answer 2</button>
+                    <button  class="btn">Answer 3</button>
+                    <button  class="btn">Answer 4</button>
+                </div>
+            
+                <div id="hidden" class="next-container">
+                    <div class="next-container">
+                        <button class="btn-next">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="hidden" class="main-result-container">
+        <div class="result-container">
+                <div class="img">
+                    <figure>
+                        <img src="./images/icons8-thumbs-up-48.png" alt="thumbs-up">
+                    </figure>
+                </div>
+                <div class="result-title">
+                    <h3>You've made it <span id="user-name">Name</span></h3>
+                </div>
+
+                <div class="result-score">
+                    <p>You got <span id="user-score">0</span> out of 10 questions correct</p>
+                </div>
+                <div class="result-time">
+                    <p>Your answered in <span id="user-time">0</span> seconds</p>
+                </div>
+                <div class="restart-container">
+                    <button class="btn-restart">Restart</button>
+                </div>
+
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>

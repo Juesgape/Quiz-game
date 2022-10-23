@@ -16,7 +16,7 @@ html {
 }
 body {
     background-color: var(--body);
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 //IMPORTANT STYLES
 .show-hidden {
@@ -32,6 +32,9 @@ body {
 }
 #wrong-button {
     background-color: var(--wrongButton);
+}
+.disable-buttons  {
+    pointer-events: none;
 }
 //END OF IMPORTANT STYLES
 .initial-screen-container {
@@ -130,7 +133,6 @@ body {
     padding: 2rem;
     background-color: var(--lightPurple);
     cursor: pointer;
-
 }
 .next-container {
     display: grid;

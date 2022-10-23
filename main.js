@@ -19,7 +19,6 @@ const answerButtonsElement = document.querySelector('.btn-container')
 const nextButton = document.querySelector('.btn-next')
 const restartButton = document.querySelector('.btn-restart')
 
-const disableButton = document.querySelector('.btn')
 
 //Variable where the questions will be displayed
 const questionElement = document.getElementById('question')
@@ -91,9 +90,7 @@ function showQuestion(question) {
         }
         button.addEventListener('click', selectAnswer)
         button.addEventListener('click', () => {
-            button.disabled = true
         })
-
         answerButtonsElement.appendChild(button)
     });
 }
@@ -114,10 +111,13 @@ function selectAnswer(e) {
         setStatusClass(button, button.dataset.correct)
     })
 
+    /* let disableButton = document.querySelectorAll('.btn') */
+
     //updating score
     if (correct) {
         currentScore ++
         score.textContent = currentScore
+        answerButtonsElement.classList.add('disable-buttons')
     }
     //cheking for last question
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
@@ -132,12 +132,18 @@ function selectAnswer(e) {
         displayUserName.textContent = inputName.value
         displayUserScore.textContent = currentScore
         displayUserTime.textContent = currentTime
-        
+
+        //removing background color in the result container
+        setTimeout(() => {
+            document.body.removeAttribute('id', 'wrong-button')
+            document.body.removeAttribute('id', 'correct-button')
+        }, 2000)
     }
 }
 
 function setStatusClass(element, correct) {
-    clearStatusClass(element)
+    //desactivating buttons when the user has answered
+    answerButtonsElement.classList.add('disable-buttons')
     if (correct) {
         element.setAttribute('id', 'correct-button')
 
@@ -147,6 +153,7 @@ function setStatusClass(element, correct) {
 }
 
 function clearStatusClass(element) {
+    answerButtonsElement.classList.remove('disable-buttons')
     element.removeAttribute('id', 'correct-button')
     element.removeAttribute('id','wrong-button')
 }

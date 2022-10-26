@@ -10,6 +10,9 @@ const displayUserName = document.querySelector('#user-name')
 const displayUserScore = document.querySelector('#user-score')
 let displayUserTime = document.querySelector('#user-time')
 
+//position containers
+const positionContainer = document.querySelector('.main-positions-container')
+
 //input value initial screen
 let inputName = document.querySelector('#input-name')
 
@@ -18,6 +21,8 @@ const buttonContinue = document.querySelector('#initial-continue')
 const answerButtonsElement = document.querySelector('.btn-container')
 const nextButton = document.querySelector('.btn-next')
 const restartButton = document.querySelector('.btn-restart')
+const positionsButton = document.querySelector('.btn-positions')
+const backButton = document.querySelector('.btn-back')
 
 
 //Variable where the questions will be displayed
@@ -55,7 +60,22 @@ nextButton.addEventListener('click', () => {
     setNextQuestion()
 })
 
-restartButton.addEventListener('click', startQuiz)
+restartButton.addEventListener('click', () => {
+    initialContainer.removeAttribute('id', 'hidden')
+    mainResultContainer.setAttribute('id', 'hidden')
+})
+
+positionsButton.addEventListener('click', () => {
+    mainResultContainer.setAttribute('id', 'hidden')
+    positionContainer.removeAttribute('id', 'hidden')
+
+    populateBoard()
+})
+
+backButton.addEventListener('click', () => {
+    mainResultContainer.removeAttribute('id', 'hidden')
+    positionContainer.setAttribute('id', 'hidden')
+})
 
 function startQuiz() {
     //setting score to 0
@@ -111,8 +131,6 @@ function selectAnswer(e) {
         setStatusClass(button, button.dataset.correct)
     })
 
-    /* let disableButton = document.querySelectorAll('.btn') */
-
     //updating score
     if (correct) {
         currentScore ++
@@ -132,6 +150,9 @@ function selectAnswer(e) {
         displayUserName.textContent = inputName.value
         displayUserScore.textContent = currentScore
         displayUserTime.textContent = currentTime
+
+        //updating position table
+        setUsersPositions()
 
         //removing background color in the result container
         setTimeout(() => {
@@ -156,6 +177,67 @@ function clearStatusClass(element) {
     answerButtonsElement.classList.remove('disable-buttons')
     element.removeAttribute('id', 'correct-button')
     element.removeAttribute('id','wrong-button')
+}
+
+//users Positions
+let userNames = []
+let points = []
+let timeSpent = []
+
+function setUsersPositions() {
+    userNames.push(inputName.value)
+    points.push(currentScore)
+    timeSpent.push(currentTime)
+
+    sortItems(points, userNames)
+}
+
+function populateBoard() {
+    //deleting past table position
+    let board = document.querySelector('.position-table')
+    board.innerHTML = ""
+
+    for (let i = 0; i < userNames.length; i ++) {
+
+        let row = board.insertRow()
+        let cell = row.insertCell()
+        let cell2 = row.insertCell()
+        let cell3 = row.insertCell()
+
+        cell.innerText = i + 1
+        cell2.innerText = userNames[i]
+        cell3.innerText = points[i]
+
+        /* board.insertAdjacentText('beforeend', ' ' + `${userNames[i]} => ${points[i]} |`);
+        let linebreak = document.createElement("br");
+        board.appendChild(linebreak) */
+    }
+}
+
+
+//Sort items 
+function sortItems(pointsSwapped, namesSwapped) {
+	for (let i = 0; i < pointsSwapped.length; i++) {
+		for (let j = 0; j < pointsSwapped.length; j++) {
+			if (pointsSwapped[j] > pointsSwapped[j + 1]) {
+
+                let temp = namesSwapped[j];
+                namesSwapped[j] = namesSwapped[j + 1];
+                namesSwapped[j + 1] = namesSwapped
+				namesSwapped[j + 1] = temp;
+
+				let temp2 = pointsSwapped[j];
+				pointsSwapped[j] = pointsSwapped[j + 1];
+                pointsSwapped[j + 1] = pointsSwapped
+				pointsSwapped[j + 1] = temp2;
+
+			}
+		}
+	}
+	userNames = namesSwapped.reverse(), 
+    points = pointsSwapped.reverse();
+
+    console.log(userNames, points)
 }
 
 const questions = [

@@ -1,0 +1,70 @@
+.main-initial-screen {
+    padding-top: 8rem;
+}
+.input-container {
+    height: 40rem;
+    width: 50rem;
+    text-align: center;
+}
+.input-container h3 {
+    font-size: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+}
+#input-name {
+    font-size: 3rem;
+    height: 5rem;
+}
+.initial-screen-btn {
+    padding: 8rem;
+}
+#initial-continue {
+    font-size: 3rem;
+}
+.table-container {
+    width: 500px;
+    min-height: 420px;
+}
+.main-score p {
+    font-size: 3rem;
+}
+.main-score span {
+    font-size: 3rem;
+}
+.main-score img {
+    width: 40px;
+}
+.title {
+    font-size: 3rem;
+}
+.result-container {
+    width: 500px;
+    height: 500px;
+}
+.img {
+    padding: 0rem;
+}
+.result-title h3 {
+    font-size: 4rem;
+}
+.result-title span {
+    font-size: 4rem;
+}
+.result-score p, span {
+    font-size: 2rem;
+}
+.result-time p, span {
+    font-size: 2rem;
+}
+.restart-container button {
+    font-size: 1.8rem;
+}
+.restart-container {
+    padding-top: 2rem;
+}
+.positions-container {
+    padding-bottom: 5rem;
+}
+.btn-positions {
+    font-size: 1.8rem;
+}

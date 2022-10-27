@@ -57,6 +57,10 @@ body {
 #initial-continue  {
     cursor: pointer;
 }
+#initial-continue:hover {
+    background-color: red;
+    color: black;
+}
 .input-container {
     background-color: var(--white);
     border-radius:20px;
@@ -220,26 +224,29 @@ body {
     padding-bottom: 1.5rem;
 }
 .positions-grid-container {
-    max-width: 375px;
+    max-width: 330px;
     margin: 0 auto;
     height: auto;
     background-color: white;
     color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    padding: 0px 5rem 0px 2rem;
     border: solid black;
+}
+.positions-grid-container div {
+    padding: 0px 4rem 0px 4rem;
 }
 .positions-grid-container div h4 {
     font-size: 2rem;
 }
 .position-table-container {
-    max-width: 375px;
+    max-width: 400px;
     margin: 0 auto;
     height: auto;
     background-color: white;
     color: black;
     display: flex;
-    justify-content: space-evenly;
     border: solid black;
 }
 .position-table {
